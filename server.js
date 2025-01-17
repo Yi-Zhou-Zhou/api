@@ -1,13 +1,13 @@
-const express = require('express')
+import express, { json } from 'express'
 const app = express()
-const movies = require('./data/movies.json')
-const crypto = require('node:crypto')
-const cors = require('cors')
-const { validateMovie, validatePatch } = require('./movies')
+import movies from './data/movies.json' with {type: 'json'}
+import { randomUUID } from 'node:crypto'
+import cors from 'cors'
+import { validateMovie, validatePatch } from './schemas/movies.js'
 
 app.disable('x-powered-by')
-app.use(express.json())
-app.use(cors)
+app.use(json())
+app.use(cors())
 
 app.get('/', (req, res) => {
   res.json({ message: 'Hello World!' })
@@ -46,7 +46,7 @@ app.post('/movies', (req, res) => {
   }
 
   const newMovie = {
-    id: crypto.randomUUID(),
+    id: randomUUID(),
     ...result.data
   }
 
@@ -75,6 +75,6 @@ app.patch('/movies/:id', (req, res) => {
 
   return res.json(updateMovie)
 })
-app.listen(3001, '0.0.0.0', () => {
-  console.log('Server is running on http://0.0.0.0:3001')
+app.listen(8000, () => {
+  console.log('Server is running on http://localhost:8000')
 })
