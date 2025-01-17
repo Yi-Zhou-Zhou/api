@@ -1,0 +1,34 @@
+
+### RETRIEVE ALL MOVIES
+GET http://localhost:8000/movies
+
+### RETRIEVE A MOVIE BASED ON GIVEN ID
+GET http://localhost:8000/movies/dcdd0fad-a94c-4810-8acc-5f108d3b18c3
+
+### RETRUEVE MOVIES BASED ON THEIR GENRE
+GET http://localhost:8000/movies?genre=drama
+
+### CREATE A MOVIE GIVEN THE DETAILED INFORMATION
+POST http://localhost:8000/movies
+Content-Type: application/json
+
+{
+    "title": "The Shawshank Redemption",
+    "genre": ["Drama"],
+    "year": 1994,
+    "director": "Frank Darabont",
+    "actors": ["Tim Robbins", "Morgan Freeman"],
+    "rating": 9.3,
+    "duration": 200,
+    "rate": 5,
+    "poster": "https://www.imdb.com/title/tt0111161/mediaviewer/rm4261120512"
+
+}
+
+### UPDATE A MOVIE BASED ON GIVEN ID
+PATCH http://localhost:8000/movies/dcdd0fad-a94c-4810-8acc-5f108d3b18c3
+Content-Type: application/json
+
+{
+    "year": 1995
+}
