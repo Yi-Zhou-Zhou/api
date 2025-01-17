@@ -75,6 +75,6 @@ app.patch('/movies/:id', (req, res) => {
 
   return res.json(updateMovie)
 })
-app.listen(8000, () => {
-  console.log('Server is running on http://0.0.0.0:8000')
+app.listen(3001, () => {
+  console.log('Server is running on http://0.0.0.0:3001')
 })
